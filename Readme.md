@@ -1,3 +1,154 @@
+# Variables
+* Variable allows computers to store and manipulate data in a dynamic fashion
+# Difference Between Let,Var and Const
+## Var
+* The scope of a var variable is functional scope.
+* It can be updated and re-declared into the scope.
+* It can be declared without initialization.
+* It can be accessed without initialization as its default value is “undefined”.
+## Let
+* The scope of a let variable is block scope.
+* It can be updated but cannot be re-declared into the scope.
+* It can be declared without initialization.
+* It cannot be accessed without initialization, as it returns an error.
+## Const
+* The scope of a const variable is block scope.
+* It cannot be updated or re-declared into the scope.
+* It cannot be declared without initialization.
+* It cannot be accessed without initialization, as it cannot be declared without initialization.
+
+# Variable Scope in Javascript
+* The scope manages the availability of variables or we can also say that it determines the accessibility of variables.
+## Types of Scope in Javascript
+  * Block Scope
+  * Function Scope
+  * Local Scope
+  * Global Scope
+## Block Scope
+*  let and const are the two new important keywords that were introduced by the ES6 and these two keywords provide Block Scope in JavaScript. 
+* Variables that are declared inside a { } block cannot be accessed from outside the block.
+
+```Javascript
+{
+ var x = 2;
+}
+//x can be used here
+```
+* Variables declared with the var keyword cannot have block scope and they can be declared inside a { } block and can be accessed from outside the block.
+
+```Javascript
+{
+ let x = 2;
+}
+//x cannot be used here
+```
+## Example
+```Javascript
+function block(){
+    let x=1;
+    console.log(x);   //1
+}block();
+console.log(x);   //x is not defined
+```
+## Output
+```Javascript
+1
+/home/kathish/Desktop/TopicsInJs/block.js:5
+console.log(x);
+            ^
+
+ReferenceError: x is not defined
+    at Object.<anonymous> (/home/kathish/Desktop/TopicsInJs/block.js:5:13)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:77:12)
+    at node:internal/main/run_main_module:17:47
+```
+## Function Scope
+* JavaScript has function scope and each function creates a new scope. Variables defined inside a function are not accessible from outside the function and variables declared with var, let and const are quite similar when declared inside a function.
+```Javascript
+//var
+function myFunction() {
+   var firstName = "Krishna";   // Function Scope
+}
+//let
+function myFunction() {
+   let firstName = "Krishna";   // Function Scope
+}
+//const
+function myFunction() {
+   const firstName = "Krishna";   // Function Scope
+}
+```
+## Local Scope
+* Variables declared inside a function become local to the function. Local variables are created when a function starts and deleted when the function is executed. Local variables have Function Scope which means that they can only be accessed from within the function.
+```Javascript
+// This part of code cannot use firstName
+
+function myFunction() {
+ let firstName = "Krishna";
+ // This part of code can use firstName
+}
+
+//This part of code cannot use firstName
+```
+## Example
+```Javascript
+function foo() {
+  var x = 1;
+  console.log("inside function: ", x);
+}
+
+foo(); // Inside function: 1
+console.log(x); // Error: x is not defined
+```
+## Output
+```Javascript
+inside function:  1
+/home/kathish/Desktop/TopicsInJs/funscope.js:7
+console.log(x); // Error: x is not defined
+            ^
+
+ReferenceError: x is not defined
+    at Object.<anonymous> (/home/kathish/Desktop/TopicsInJs/funscope.js:7:13)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:77:12)
+    at node:internal/main/run_main_module:17:47
+```
+## Global Scope
+* Variables declared Globally (outside of any function) have Global Scope and Global variables can be accessed from anywhere in a program. Similar to function scope variables declared with var, let and const are quite similar when declared outside a block.
+## Example
+```Javascript
+// Global scope
+var x = 1;
+const y = 2;
+let z = 3;
+
+console.log(x); // 1
+console.log(y); // 2
+console.log(z); // 3
+
+function getNo() {
+  console.log(x); // x is accessible here
+  console.log(y); // y is accessible here
+  console.log(z); // z is accessible here
+}
+getNo(); // 1
+```
+## Output
+```Javascript
+1
+2
+3
+1
+2
+3
+```
 # Rest and Spread
 
 # Rest
@@ -297,18 +448,27 @@ console.log("I am First");
 I am First
 Hello World
 ```
+
 # Event Loop
-* JavaScript has a runtime model based on an event loop, which is responsible for executing the code, collecting and processing events, and executing queued sub-tasks. This model is quite different from models in other languages like C and Java.
+
+- JavaScript has a runtime model based on an event loop, which is responsible for executing the code, collecting and processing events, and executing queued sub-tasks. This model is quite different from models in other languages like C and Java.
+
 ## Stack
-* Function calls form a stack of frames.
+
+- Function calls form a stack of frames.
+
 ## Heap
-* Objects are allocated in a heap which is just a name to denote a large (mostly unstructured) region of memory.
+
+- Objects are allocated in a heap which is just a name to denote a large (mostly unstructured) region of memory.
+
 ## Queue
-* A JavaScript runtime uses a message queue, which is a list of messages to be processed. Each message has an associated function that gets called to handle the message.
-* At some point during the event loop, the runtime starts handling the messages on the queue, starting with the oldest one. To do so, the message is removed from the queue and its corresponding function is called with the message as an input parameter. As always, calling a function creates a new stack frame for that function's use.
-* The processing of functions continues until the stack is once again empty. Then, the event loop will process the next message in the queue (if there is one).
+
+- A JavaScript runtime uses a message queue, which is a list of messages to be processed. Each message has an associated function that gets called to handle the message.
+- At some point during the event loop, the runtime starts handling the messages on the queue, starting with the oldest one. To do so, the message is removed from the queue and its corresponding function is called with the message as an input parameter. As always, calling a function creates a new stack frame for that function's use.
+- The processing of functions continues until the stack is once again empty. Then, the event loop will process the next message in the queue (if there is one).
 
 ## Example1
+
 ```Javascript
 console.log("Start");
 
@@ -318,13 +478,17 @@ setTimeout(() => {
 
 console.log("End");
 ```
+
 ## Output
+
 ```Javascript
 Start
 End
 Message
 ```
+
 ## Example2
+
 ```Javascript
 function eventLoop() {
   console.log("Start");
@@ -342,7 +506,9 @@ function eventLoop() {
   console.log("End");
 }eventLoop();
 ```
+
 ## Output
+
 ```Javascript
 Start
 Message
