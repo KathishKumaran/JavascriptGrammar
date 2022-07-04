@@ -926,3 +926,229 @@ person1.method();
 ```Javascript
 I am Kathish Kumaran, I am living in  Tenkasi, and My age is 23.
 ```
+
+# Loops
+
+- The primary purpose of a loop is to iterate over one or a set of multiple statements. Iterating is commonplace in software development – it means to repeat an action a multiple number of times.
+
+## Syntax
+
+```Javascript
+for(initialize;condition;increment)
+```
+
+## Example
+
+```Javascript
+let arr=[1,4,6,65,98,34];
+let sum=0;
+for(i=0;i<arr.length;i++){
+    sum+=arr[i];
+}console.log(sum);
+```
+
+## Output
+
+```Javascript
+208
+```
+
+## Example
+
+```Javascript
+//nested for
+for(i=0;i<3;i++){
+    for(j=0;j<3;j++){
+        console.log(i,j);
+    }
+}
+```
+
+## Output
+
+```Javascript
+0 0
+0 1
+0 2
+1 0
+1 1
+1 2
+2 0
+2 1
+2 2
+```
+
+## Example
+
+```Javascript
+//continue
+for(let i=0;i<8;i++){
+    if(i==2)
+    continue;
+    console.log(i);
+}
+```
+
+## Output
+
+```Javascript
+0
+1
+3
+4
+5
+6
+7
+```
+
+## Example
+
+```Javascript
+//break
+for(let i=0;i<8;i++){
+    if(i==4)
+    break;
+    console.log(i);
+}
+```
+
+## Output
+
+```Javascript
+0
+1
+2
+3
+```
+
+## Example
+
+```Javascript
+let a=0;
+outer:for(i=0;i<5;i++){
+    inner:for(j=0;j<5;j++){
+        a++;
+        if(i==2)
+        break outer;
+    }
+}console.log(a);
+```
+
+## Output
+
+```Javascript
+11
+```
+
+## Example
+
+```Javascript
+let a=0;
+outer:for(i=0;i<5;i++){
+    inner:for(j=0;j<5;j++){
+        a++;
+        if(i==2)
+        break inner;
+    }
+}console.log(a);
+```
+
+## Output
+
+```Javascript
+21
+```
+
+# While Loop
+
+- A while loop will iterate for an indefinite number of times until the specified
+  condition (there is only one) evaluates to false. At which point your loop will stop
+  and execution flow will resume.
+
+## Example
+
+```Javascript
+let a=0;
+while(a<10){
+    a++;
+    if(a==3)
+    break;
+    console.log(a);
+}
+```
+
+## Output
+
+```Javascript
+1
+2
+```
+
+## For..Of
+
+## Example
+
+```Javascript
+let a="ramkumar";
+for(value of a)
+console.log(value);
+
+let b=[1,2,4,57];
+for(value of b)
+console.log(value);
+
+let c={x:1,y:2,z:3};
+for(key of Object.keys(c))
+console.log(key);
+for(value of Object.values(c))
+console.log(value);
+for(entry of Object.entries(c))
+console.log(entry);
+
+// for(value of c)
+// console.log(value); //Error
+```
+
+## Output
+
+```
+r
+a
+m
+k
+u
+m
+a
+r
+1
+2
+4
+57
+x
+y
+z
+1
+2
+3
+[ 'x', 1 ]
+[ 'y', 2 ]
+[ 'z', 3 ]
+```
+
+## For...in
+
+## Example
+
+```Javascript
+let c={x:1,y:2,z:3};
+for(let value in c)
+console.log(value,c[value]);
+```
+
+## Output
+
+```Javascript
+x 1
+y 2
+z 3
+```
