@@ -1152,3 +1152,231 @@ x 1
 y 2
 z 3
 ```
+
+# Array
+
+- Many of the Array.\* methods are iterators. Array methods are attached to Array.prototype property. This means you can execute them directly from array object like array.forEach() or directly from array’s literal value like: [1,2,3].forEach();
+
+## array.prototype.sort()
+
+- The sort() method sorts the elements of an array in place and returns the sorted array. The default sort order is ascending, built upon converting the elements into strings, then comparing their sequences of values.
+
+## Example
+
+```Javascript
+const array1 = [4,6,5,1,12,3];
+//array1.sort();
+array1.sort((a,b)=>a-b);
+console.log(array1);
+```
+
+## Output
+
+```Javascript
+[ 1, 3, 4, 5, 6, 12 ]
+```
+
+## Example
+
+```Javascript
+let fruits=[{name:"banana",count:10},
+{name:"orange",count:15},
+{name:"apple",count:3},
+{name:"grapes",count:56}];
+let result=(a,b)=>a.count-b.count;
+let endresult=fruits.sort(result)
+console.log(endresult);
+```
+
+## Output
+
+```Javascript
+[
+  { name: 'apple', count: 3 },
+  { name: 'banana', count: 10 },
+  { name: 'orange', count: 15 },
+  { name: 'grapes', count: 56 }
+]
+```
+
+## array.forEach
+
+- The forEach method will execute a function for every item in the array. Each iteration step receives 3 arguments value, index, object.
+
+```Javascript
+let fruits=["banana","grapes","apple","orange"];
+fruits.forEach(function(item,index,object){
+    console.log(index,item,object);
+});
+```
+
+## Output
+
+```Javascript
+0 banana [ 'banana', 'grapes', 'apple', 'orange' ]
+1 grapes [ 'banana', 'grapes', 'apple', 'orange' ]
+2 apple [ 'banana', 'grapes', 'apple', 'orange' ]
+3 orange [ 'banana', 'grapes', 'apple', 'orange' ]
+```
+
+## array.filter
+
+- The filter() method creates a new array with all elements that pass the test implemented by the provided function.
+- filter() does not change the original array.
+
+```Javascript
+Return value : new array consisting only of items that passed a condition.
+```
+
+```Javascript
+let a=[1,3,4,67,89,8];
+let res=a.filter((value)=>value<10);
+console.log(res);
+```
+
+## Output
+
+```Javascript
+[ 1, 3, 4, 8 ]
+```
+
+## array.map
+
+- The map() method calls the provided function once for each element in an array, in order.
+- map() does not change the original array.
+
+```Javascript
+Return value: a copy of the original array with modified values (if any.)
+```
+
+## Example
+
+```Javascript
+let a=[3,4,5,6,58,9];
+let result=a.map((value)=>value+10);
+console.log(result);
+```
+
+## Output
+
+```Javascript
+[ 13, 14, 15, 16, 68, 19 ]
+```
+
+## array.flat
+
+- The flat() method creates a new array with all sub-array elements concatenated into it recursively up to the specified depth.
+
+```Javascript
+const arr1 = [0, 1, 2, [3, 4]];
+console.log(arr1.flat());
+
+const arr2 = [0, 1, 2, [[[3, 4]]]];
+console.log(arr2.flat(3));                  //sub array count
+```
+
+## Output
+
+```Javascript
+[ 0, 1, 2, 3, 4 ]
+[ 0, 1, 2, 3, 4 ]
+```
+
+# Objects
+* In JavaScript, an object is a standalone entity, with properties and type. Compare it with a cup, for example. A cup is an object, with properties. A cup has a color, a design, weight, a material it is made of, etc. The same way, JavaScript objects can have properties, which define their characteristics.
+
+```Javascript
+const myCar=new Object();
+myCar.make="ford";
+myCar.model="mustang";
+myCar.year=1990;
+console.log(myCar);
+```
+## Output
+```Javasript
+{ make: 'ford', model: 'mustang', year: 1990 }
+```
+## Using a constructor function
+* you can create an object with these two steps:
+
+* Define the object type by writing a constructor function. There is a strong convention, with good reason, to use a capital initial letter.
+* Create an instance of the object with new.
+## Example1
+```Javascript
+function Person(name, age, sex) {
+    this.name = name;
+    this.age = age;
+    this.sex = sex;
+  }
+  const benny = new Person("Benny", 33, 'M');
+  const john = new Person("John", 39, 'M');
+    console.log(benny);
+```
+## Output
+```Javascript
+Person { name: 'Benny', age: 33, sex: 'M' }
+```
+## Example2
+```Javascript
+const Manager = {
+    name: "John",
+    age: 27,
+    job: "Software Engineer"
+  }
+  const Intern = {
+    name: "Ben",
+    age: 21,
+    job: "Software Engineer Intern"
+  }
+  
+  function sayHi() {
+    console.log(`Hello, my name is ${this.name}`)
+  }
+  
+
+  Manager.sayHi = sayHi;
+  Intern.sayHi = sayHi;
+  
+  Manager.sayHi();
+  Intern.sayHi(); 
+  
+```
+## Output
+```Javascript
+Hello, my name is John
+Hello, my name is Ben
+```
+## Example3
+```Javascript
+//deleting
+const myobj = new Object();
+myobj.a = 5;
+myobj.b = 12;
+
+delete myobj.a;
+console.log ('a' in myobj);
+
+```
+## Output
+```Javascript
+false
+```
+## Example4
+```Javascript
+let school = {
+  name: "Vivekananda School",
+  location: "Delhi",
+  established: "1971",
+  displayInfo: function () {
+    console.log(
+      `${school.name} was established in ${school.established} at ${school.location}`
+    );
+  },
+};
+school.displayInfo();
+
+```
+## Output
+```Javascript
+Vivekananda School was established in 1971 at Delhi
+```
