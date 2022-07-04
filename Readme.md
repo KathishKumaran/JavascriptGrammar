@@ -1,32 +1,45 @@
 # Variables
-* Variable allows computers to store and manipulate data in a dynamic fashion
+
+- Variable allows computers to store and manipulate data in a dynamic fashion
+
 # Difference Between Let,Var and Const
+
 ## Var
-* The scope of a var variable is functional scope.
-* It can be updated and re-declared into the scope.
-* It can be declared without initialization.
-* It can be accessed without initialization as its default value is “undefined”.
+
+- The scope of a var variable is functional scope.
+- It can be updated and re-declared into the scope.
+- It can be declared without initialization.
+- It can be accessed without initialization as its default value is “undefined”.
+
 ## Let
-* The scope of a let variable is block scope.
-* It can be updated but cannot be re-declared into the scope.
-* It can be declared without initialization.
-* It cannot be accessed without initialization, as it returns an error.
+
+- The scope of a let variable is block scope.
+- It can be updated but cannot be re-declared into the scope.
+- It can be declared without initialization.
+- It cannot be accessed without initialization, as it returns an error.
+
 ## Const
-* The scope of a const variable is block scope.
-* It cannot be updated or re-declared into the scope.
-* It cannot be declared without initialization.
-* It cannot be accessed without initialization, as it cannot be declared without initialization.
+
+- The scope of a const variable is block scope.
+- It cannot be updated or re-declared into the scope.
+- It cannot be declared without initialization.
+- It cannot be accessed without initialization, as it cannot be declared without initialization.
 
 # Variable Scope in Javascript
-* The scope manages the availability of variables or we can also say that it determines the accessibility of variables.
+
+- The scope manages the availability of variables or we can also say that it determines the accessibility of variables.
+
 ## Types of Scope in Javascript
-  * Block Scope
-  * Function Scope
-  * Local Scope
-  * Global Scope
+
+- Block Scope
+- Function Scope
+- Local Scope
+- Global Scope
+
 ## Block Scope
-*  let and const are the two new important keywords that were introduced by the ES6 and these two keywords provide Block Scope in JavaScript. 
-* Variables that are declared inside a { } block cannot be accessed from outside the block.
+
+- let and const are the two new important keywords that were introduced by the ES6 and these two keywords provide Block Scope in JavaScript.
+- Variables that are declared inside a { } block cannot be accessed from outside the block.
 
 ```Javascript
 {
@@ -34,7 +47,8 @@
 }
 //x can be used here
 ```
-* Variables declared with the var keyword cannot have block scope and they can be declared inside a { } block and can be accessed from outside the block.
+
+- Variables declared with the var keyword cannot have block scope and they can be declared inside a { } block and can be accessed from outside the block.
 
 ```Javascript
 {
@@ -42,7 +56,9 @@
 }
 //x cannot be used here
 ```
+
 ## Example
+
 ```Javascript
 function block(){
     let x=1;
@@ -50,7 +66,9 @@ function block(){
 }block();
 console.log(x);   //x is not defined
 ```
+
 ## Output
+
 ```Javascript
 1
 /home/kathish/Desktop/TopicsInJs/block.js:5
@@ -66,8 +84,11 @@ ReferenceError: x is not defined
     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:77:12)
     at node:internal/main/run_main_module:17:47
 ```
+
 ## Function Scope
-* JavaScript has function scope and each function creates a new scope. Variables defined inside a function are not accessible from outside the function and variables declared with var, let and const are quite similar when declared inside a function.
+
+- JavaScript has function scope and each function creates a new scope. Variables defined inside a function are not accessible from outside the function and variables declared with var, let and const are quite similar when declared inside a function.
+
 ```Javascript
 //var
 function myFunction() {
@@ -82,8 +103,11 @@ function myFunction() {
    const firstName = "Krishna";   // Function Scope
 }
 ```
+
 ## Local Scope
-* Variables declared inside a function become local to the function. Local variables are created when a function starts and deleted when the function is executed. Local variables have Function Scope which means that they can only be accessed from within the function.
+
+- Variables declared inside a function become local to the function. Local variables are created when a function starts and deleted when the function is executed. Local variables have Function Scope which means that they can only be accessed from within the function.
+
 ```Javascript
 // This part of code cannot use firstName
 
@@ -94,7 +118,9 @@ function myFunction() {
 
 //This part of code cannot use firstName
 ```
+
 ## Example
+
 ```Javascript
 function foo() {
   var x = 1;
@@ -104,7 +130,9 @@ function foo() {
 foo(); // Inside function: 1
 console.log(x); // Error: x is not defined
 ```
+
 ## Output
+
 ```Javascript
 inside function:  1
 /home/kathish/Desktop/TopicsInJs/funscope.js:7
@@ -120,9 +148,13 @@ ReferenceError: x is not defined
     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:77:12)
     at node:internal/main/run_main_module:17:47
 ```
+
 ## Global Scope
-* Variables declared Globally (outside of any function) have Global Scope and Global variables can be accessed from anywhere in a program. Similar to function scope variables declared with var, let and const are quite similar when declared outside a block.
+
+- Variables declared Globally (outside of any function) have Global Scope and Global variables can be accessed from anywhere in a program. Similar to function scope variables declared with var, let and const are quite similar when declared outside a block.
+
 ## Example
+
 ```Javascript
 // Global scope
 var x = 1;
@@ -140,7 +172,9 @@ function getNo() {
 }
 getNo(); // 1
 ```
+
 ## Output
+
 ```Javascript
 1
 2
@@ -149,6 +183,7 @@ getNo(); // 1
 2
 3
 ```
+
 # Rest and Spread
 
 # Rest
@@ -515,4 +550,379 @@ Message
 End
 First
 Second
+```
+
+# Promises
+
+- A promise, in computer science, is basically a concept that handles a value that is to be produced in the future, after an asynchronous operation completes successfully or if it does not, gracefully handles a failure.
+
+## Parts of a promise
+
+- A promise has a STATE and a RESULT
+
+- A promise has 3 states:
+
+  - Pending
+  - Fulfilled
+  - Rejected
+
+- Pending promises in JavaScript, much like in the real world, is a promise that has been executed but not yet completed and can therefore move to the ‘Fulfilled’ or ‘Rejected’ state.
+
+- Fulfilled promises are resolved or completed, indicating a successful outcome.
+
+- Rejected promises indicate an unsuccessful outcome due to an error or a timeout.
+
+## Handling a promise
+
+- The handler functions .then(), .catch(), .finally() allow functions consuming the promise to be in sync with the executor function when a promise is fulfilled/rejected.
+
+## Example
+
+```Javascript
+let promise = new Promise(function (resolve, reject) {
+    const x = "kkr";
+    const y = "kkr";
+    if (x === y) {
+      resolve();
+    } else {
+      reject();
+    }
+  });
+  promise
+    .then(function () {
+      console.log("Success, You are a kkr");
+    })
+    .catch(function () {
+      console.log("Some error has occurred");
+    });
+```
+
+## Output
+
+```Javascript
+Success, You are a kkr
+```
+
+## Example1
+
+```Javascript
+//catch
+let promise = new Promise(function (resolve, reject) {
+  reject("Promise Rejected");
+});
+
+promise
+  .then(function (successMessage) {
+    console.log(successMessage);
+  })
+  .catch(function (errorMessage) {
+    //error handler function is invoked
+    console.log(errorMessage);
+  });
+```
+
+## Output
+
+```Javascript
+Promise Rejected
+```
+
+## Example2
+
+```Javascript
+//catch
+let promise = new Promise(function (resolve, reject) {
+  throw new Error("Some error has occurred");
+});
+
+promise
+  .then(function (successMessage) {
+    console.log(successMessage);
+  })
+  .catch(function (errorMessage) {
+    //error handler function is invoked
+    console.log(errorMessage);
+  });
+```
+
+## Output
+
+```Javascript
+Error: Some error has occurred
+  at /home/kathish/Desktop/TopicsInJs/catch2.js:2:11
+  at new Promise (<anonymous>)
+  at Object.<anonymous> (/home/kathish/Desktop/TopicsInJs/catch2.js:1:15)
+  at Module._compile (node:internal/modules/cjs/loader:1105:14)
+  at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+  at Module.load (node:internal/modules/cjs/loader:981:32)
+  at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+  at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:77:12)
+  at node:internal/main/run_main_module:17:47
+```
+
+## Example
+
+```Javascript
+//then
+let promise = new Promise(function (resolve, reject) {
+    resolve("kkr");
+  });
+
+  promise.then(
+    function (successMessage) {
+      //success handler function is invoked
+      console.log(successMessage);
+    },
+    function (errorMessage) {
+      console.log(errorMessage);
+    }
+  );
+```
+
+## Output
+
+```Javascript
+kkr
+```
+
+## Example
+
+```Javascript
+//then
+let promise = new Promise(function (resolve, reject) {
+    reject("Promise Rejected");
+  });
+
+  promise.then(
+    function (successMessage) {
+      console.log(successMessage);
+    },
+    function (errorMessage) {
+      //error handler function is invoked
+      console.log(errorMessage);
+    }
+  );
+```
+
+## Output
+
+```Javascript
+Promise Rejected
+```
+
+# asyn function
+
+- An async function is a function declared with the async keyword, and the await keyword is permitted within it. The async and await keywords enable asynchronous, promise-based behavior to be written in a cleaner style, avoiding the need to explicitly configure promise chains.
+
+## await
+
+- Await: Await function is used to wait for the promise. It could be used within the async block only. It makes the code wait until the promise returns a result. It only makes the async block wait.
+
+## Example1
+
+```Javascript
+async function a() {
+    return "first";
+  }
+  async function b() {
+    return Promise.resolve("second");
+  }
+  a().then(console.log);
+  b().then(console.log);
+```
+
+## Output
+
+```Javascript
+first
+second
+```
+
+## Example2
+
+```Javascript
+async function a() {
+    await Math.sqrt(1);
+   return "first";
+ }
+ async function b() {
+   return "second";
+ }
+ a().then(console.log);
+ b().then(console.log);
+```
+
+## Output
+
+```Javascript
+second
+first
+```
+
+## Example
+
+```Javascript
+function resolveAfter2Seconds() {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve('resolved');
+      }, 2000);
+    });
+  }
+
+  async function asyncCall() {
+    console.log('calling');
+    const result = await resolveAfter2Seconds();
+    console.log(result);
+    // expected output: "resolved"
+  }
+
+  asyncCall();
+```
+
+## Output
+
+```Javascript
+calling
+resolved
+```
+
+## Classes
+
+- Classes are a template for creating objects. They encapsulate data with code to work on that data. Classes in JS are built on prototypes but also have some syntax and semantics that are not shared with ES5 class-like semantics.
+
+## Definig Classes
+
+- Classes are in fact "special functions", and just as you can define function expressions and function declarations, the class syntax has two components: class expressions and class declarations.
+
+## Class Declaration
+
+- One way to define a class is using a class declaration. To declare a class, you use the class keyword with the name of the class
+
+```Javascript
+class Rectangle {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+}
+```
+
+## Hoisting
+
+An important difference between function declarations and class declarations is that while functions can be called in code that appears before they are defined, classes must be defined before they can be constructed. Code like the following will throw a ReferenceError:
+
+```Javascript
+const p = new Rectangle(); // ReferenceError
+
+class Rectangle {}
+```
+
+## Class Expressions
+
+- A class expression is another way to define a class. Class expressions can be named or unnamed. The name given to a named class expression is local to the class's body. However, it can be accessed via the name property.
+
+```Javascript
+// unnamed
+let Rectangle = class {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+};
+console.log(Rectangle.name);
+// output: "Rectangle"
+
+// named
+let Rectangle = class Rectangle2 {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+};
+console.log(Rectangle.name);
+// output: "Rectangle2"
+```
+
+## Example
+
+```Javascript
+//class instance
+class Address {
+  constructor(name1, city) {
+    this.name1 = name1;
+    this.city = city;
+  }
+  class1() {
+    console.log("name: " + this.name1 + ", city: " + this.city);
+  }
+}
+let detail = new Address("kathish", "tenkasi");
+detail.class1();
+console.log(detail);
+```
+
+## Output
+
+```Javascript
+//static method
+name: kathish, city: tenkasi
+Address { name1: 'kathish', city: 'tenkasi' }
+```
+
+## Example
+
+```Javascript
+class Student {
+  constructor(name2, mark) {
+    this.name2 = name2;
+    this.mark = mark;
+  }
+  static staticMethod(name2, mark) {
+    console.log(`name: ${name2},mark: ${mark}`);
+  }
+}
+let detail1 = new Student("kathish", 63);
+console.log(detail1);
+Student.staticMethod("pradeep", 75);
+```
+
+## Output
+
+```Javascript
+Student { name2: 'kathish', mark: 63 }
+name: pradeep,mark: 75
+```
+
+## Example
+
+```Javascript
+//super keyword
+class Detail {
+  constructor(name, address) {
+    this.name = name;
+    this.address = address;
+  }
+  method() {
+    return `I am ${this.name}, I am living in  ${this.address}`;
+  }
+}
+class Person extends Detail {
+  constructor(name, address, age) {
+     super(name, address);
+    this.age = age;
+  }
+  method() {
+    console.log(`${super.method()}, and My age is ${this.age}.`);
+  }
+}
+let person1 = new Person("Kathish Kumaran", "Tenkasi", 23);
+
+person1.method();
+```
+
+## Output
+
+```Javascript
+I am Kathish Kumaran, I am living in  Tenkasi, and My age is 23.
 ```
