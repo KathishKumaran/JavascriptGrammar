@@ -12,4 +12,5 @@ function eventLoop() {
   }, 0);
 
   console.log("End");
-}eventLoop();
+}
+eventLoop();

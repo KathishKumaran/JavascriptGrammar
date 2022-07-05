@@ -1,3 +1,3 @@
 //Convert string into individual array items
-const name="rajkumar";
+const name = "rajkumar";
 console.log([...name]);

@@ -6,4 +6,3 @@ function addNumbers(a, b, c, d) {
 }
 
 console.log(addNumbers(...numbers));
-
